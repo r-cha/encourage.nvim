@@ -9,18 +9,49 @@ To install this plugin, you can use any Neovim package manager you prefer. Below
 ### Using `packer.nvim`
 
 ```lua
-use 'r-cha/encourage.nvim'
+use {
+  'r-cha/encourage.nvim',
+  config = function()
+    require('encourage').setup()
+  end
+}
+```
+
+### Using `lazy.nvim`
+
+```lua
+{
+  'r-cha/encourage.nvim',
+  config = true
+}
 ```
 
 ## Usage
 
-Once the plugin is installed, it will automatically start displaying encouraging messages in the command line area whenever you write a file (`:w`, `:write`, etc.).
+After installation, you need to set up the plugin in your Neovim configuration:
+
+```lua
+require('encourage').setup()
+```
+
+Once set up, the plugin will display encouraging messages in the command line area whenever you write a file (`:w`, `:write`, etc.).
 
 ## Customization
 
-The current version of the plugin comes with a predefined set of messages.
-If you wish to customize these messages, you can modify the `encouragements` table in the plugin's Lua code.
-In the future, you will be able to provide your own messages in the plugin configuration.
+You can customize the plugin's behavior during setup:
+
+```lua
+require('encourage').setup({
+  messages = {
+    "Great job!", 
+    "Keep up the good work!",
+    -- Add your own messages here
+  },
+  -- Other configuration options...
+})
+```
+
+If no custom messages are provided, the plugin wil use its default set of encouraging messages.
 
 ## Feedback and Contributions
 
