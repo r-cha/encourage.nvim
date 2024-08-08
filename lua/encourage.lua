@@ -40,6 +40,13 @@ local function show_floating_message(message)
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, {" " .. message .. " "})
   vim.api.nvim_win_set_option(win, "winblend", 20)
 
+  -- Set the window highlight group to use NormalFloat
+  vim.api.nvim_win_set_option(win, "winhighlight", "Normal:NormalFloat")
+
+  -- Set the background color to match the theme's floating window background
+  vim.api.nvim_set_hl(0, "CustomWriteMessageFloat", { link = "NormalFloat" })
+  vim.api.nvim_win_set_option(win, "winhl", "Normal:CustomWriteMessageFloat")
+
   -- Set a timer to close the window after 15 seconds
   vim.defer_fn(function()
     if vim.api.nvim_win_is_valid(win) then
