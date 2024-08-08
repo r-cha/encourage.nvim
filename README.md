@@ -2,6 +2,8 @@
 
 Add a little encouragement to your life any time you write a buffer.
 
+Inspired by [Encourage](https://github.com/nicollasricas/vscode-encourage) for VSCode.
+
 ## Installation
 
 To install this plugin, you can use any Neovim package manager you prefer. Below are examples for some popular package managers.
