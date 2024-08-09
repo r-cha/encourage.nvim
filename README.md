@@ -4,6 +4,8 @@ Add a little encouragement to your life any time you write a buffer.
 
 Inspired by [Encourage](https://github.com/nicollasricas/vscode-encourage) for VSCode.
 
+![output](https://github.com/user-attachments/assets/16db15fc-6922-480c-bcf3-c58a66a54964)
+
 ## Installation
 
 To install this plugin, you can use any Neovim package manager you prefer. Below are examples for some popular package managers.
