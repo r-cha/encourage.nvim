@@ -38,24 +38,39 @@ After installation, you need to set up the plugin in your Neovim configuration:
 require('encourage').setup()
 ```
 
-Once set up, the plugin will display encouraging messages in the command line area whenever you write a file (`:w`, `:write`, etc.).
+Once set up, the plugin will display encouraging messages in the bottom right corner of the current window whenever you write a file (`:w`, `:write`, etc.).
 
-## Customization
+### Customization
 
 You can customize the plugin's behavior during setup:
 
 ```lua
 require('encourage').setup({
   messages = {
-    "Great job!", 
+    "Great job!",
     "Keep up the good work!",
     -- Add your own messages here
   },
-  -- Other configuration options...
 })
 ```
 
 If no custom messages are provided, the plugin wil use its default set of encouraging messages.
+
+## Local Development
+
+To run this plugin locally in a test Neovim instance:
+
+1. In `test/init.lua`, replace `/path/to/your/encourage.nvim` with the actual path to your plugin directory.
+
+2. Start Neovim with the test configuration:
+
+```sh
+nvim -u test/init.lua
+```
+
+3. The plugin should now be loaded.
+   You can test it by writing a file and seeing the encouraging message at the bottom right of the active window.
+   If you want to test it alongside other plugins, edit `test/init.lua` accordingly.
 
 ## Feedback and Contributions
 
@@ -64,4 +79,3 @@ If you have suggestions for improvements or new features, feel free to open an i
 ## License
 
 This plugin is licensed under [MIT](https://opensource.org/licenses/MIT), so you're free to use, modify, and distribute it as you see fit.
-
