@@ -19,15 +19,20 @@ local function show_floating_message(message)
   local width = #message
   local height = 1
   local buf = vim.api.nvim_create_buf(false, true)
-  local win_height = vim.api.nvim_get_option("lines")
-  local win_width = vim.api.nvim_get_option("columns")
+
+  -- This puts the message in the bottom right corner of the current window
+  local current_win = vim.api.nvim_get_current_win()
+  local win_config = vim.api.nvim_win_get_config(current_win)
+  local win_width = win_config.width
+  local win_height = win_config.height
 
   local opts = {
     style = "minimal",
-    relative = "editor",
+    relative = "win",
+    win = current_win,
     width = width,
     height = height,
-    row = win_height - height - 4,
+    row = win_height - height - 2,
     col = win_width - width - 2,
     border = "rounded",
   }
@@ -35,7 +40,6 @@ local function show_floating_message(message)
   local win = vim.api.nvim_open_win(buf, false, opts)
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, {" " .. message .. " "})
 
-  -- Use FloatBorder for the border color
   vim.api.nvim_win_set_option(win, "winhl", "Normal:NormalFloat,FloatBorder:FloatBorder")
 
   -- Set a timer to close the window after 5 seconds
@@ -47,9 +51,7 @@ local function show_floating_message(message)
 end
 
 local function custom_write_message(encouragements)
-  -- Choose a random message
   local message = encouragements[math.random(#encouragements)]
-  -- Display the custom message in a floating window
   show_floating_message(message)
 end
 
